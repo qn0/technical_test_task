@@ -9,7 +9,7 @@ export KUBECONFIG=$PWD/kubeconfig
 
 kubectl apply -f httpbin/
 ```
-to check that service is working need folow next link http://localhost/
+to check that service is working need folow next link http://localhost:8080/
 
 ## Description:
 a cluster was needed for the test, it would be possible to use terraform and some cloud, but for the reviewer it is extra work and cost, i decided that k3s in docker is the best solution, it can be brought up anywhere and the result can be checked. i took Docker compouse from the official repo and added +1 agent for the test https://github.com/k3s-io/k3s/blob/main/docker-compose.yml
@@ -38,3 +38,4 @@ after apply pods are in state crash because the application lacks a readonly fil
 after successful apply, i check kubectl -n playson-task get po -o wide, i see 3 pods in state running on different nodes
 
 the task is completed, the solution is minimal and clean, security practices are added and the pods moved out to different nodes
+
