@@ -26,8 +26,8 @@ services:
     - .:/output
     ports:
     - 6443:6443  # Kubernetes API Server
-    - 80:80      # Ingress controller port 80
-    - 443:443    # Ingress controller port 443
+    - "127.0.0.1:8080:80"    # Ingress controller port 80 -> host port 8080
+    - "127.0.0.1:443:443"    # Ingress controller port 443 (localhost only)
 
   agent:
     image: "rancher/k3s:v1.33.0-k3s1"
@@ -68,4 +68,5 @@ services:
 volumes:
   k3s-server: {}
   k3s-agent: {}
+
   k3s-agent2: {}
